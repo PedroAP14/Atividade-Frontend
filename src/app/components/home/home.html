@@ -1,16 +1,40 @@
 <h1>Seja bem vindo ao curso de Angular</h1>
-<div class="row">
+<h4 class="text-danger">{{anuncio}}</h4>
 
-    <div class="col">
-        <img class="img-fluid" src="img/logo_horacio.png">
+<div class="card" style="width: 18rem;">
+
+    <img [src]="foto" class="card-img-top">
+
+    <div class="card-body">
+
+        <h5 class="card-title">{{nomeProduto | uppercase}}</h5>
+
+        <!-- Versão de diretiva antes do Angular17
+
+        <span *ngIf="promocao; else elseBlock" class="badge text-bg-success">Promoção</span>
+            <ng-template #elseBlock>
+                <span class="badge text-bg-primary">Aproveite</span>
+            </ng-template>
+
+        -->
+
+        @if(promocao)
+        {
+        <span class="badge text-bg-success">Promoção</span>
+        }
+        @else
+        {
+        <span class="badge text-bg-primary">Aproveite</span>
+        }
+
+        <p class="card-text">
+            Identificação: {{idProduto | number: '2.0-0'}}
+            <br>
+            Validação: {{dataValidade | date: 'shortDate'}}
+        </p>
+
+        <a href="#" class="btn btn-success float-end">{{precoProduto | currency:'BRL'}}</a>
+
     </div>
-
-    <div class="col">
-        <img class="img-fluid" src="img/crud.png">
-    </div>
-
-    <button class="btn btn-success" (click) = "testeVariaveis()"> 
-        Testar
-    </button>
 
 </div>
