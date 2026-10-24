@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
-import { validate } from '@angular/forms/signals';
+
+// Interface para garantir a tipagem correta do produto
+export interface Produto {
+  id: number;
+  nome: string;
+  valor: number;
+  validade: string;
+  promocao?: boolean;
+}
 
 @Component({
   selector: 'app-listarprodutos',
@@ -9,29 +17,23 @@ import { validate } from '@angular/forms/signals';
 })
 export class Listarprodutos {
   listaString: string[] = ["Primeiro", "Segundo", "Terceiro"];
-  listaNumeros: number[] = [15, 15.18, 100]
+  listaNumeros: number[] = [15, 15.18, 100];
+  
   objetoModelo = {
     nome: "Pedro Américo",
     idade: 16,
     altura: 1.72,
     graduado: false
   };
-  listaProduto: any[] = [
-    {
-      nome: "Curso de Angular", precoProduto: 35.56, validade: "2021-12-31", id: 1
-    },
-    {
-      nome: "Curso de Ionic", precoProduto: 50, validade: "2021-12-31", id: 2, promocao: true
-    },
-    {
-      id: 3, nome: "Curso de Ionic Avançado", precoProduto: 60, validade: "2021-12-31"
-    }
 
+  listaProduto: Produto[] = [
+    { id: 1, nome: "Curso de Angular", valor: 35.56, validade: "2021-12-31" },
+    { id: 2, nome: "Curso de Ionic", valor: 50.00, validade: "2021-12-31", promocao: true },
+    { id: 3, nome: "Curso de Ionic Avançado", valor: 60.00, validade: "2021-12-31" }
   ];
 
   constructor() {
-
-    for (let item of this.listaString) {
+    for (const item of this.listaString) {
       console.log(item);
     }
 
@@ -41,8 +43,5 @@ export class Listarprodutos {
 
     console.log(this.objetoModelo);
     console.log(this.objetoModelo.nome);
-
   }
-
-
 }
