@@ -1,40 +1,29 @@
 <h1>Seja bem vindo ao curso de Angular</h1>
+
 <h4 class="text-danger">{{anuncio}}</h4>
 
-<div class="card" style="width: 18rem;">
+<div class="row">
 
-    <img [src]="foto" class="card-img-top">
+    <div class="col">
+        <app-card-produto 
+        [foto] = "foto"
+        [nomeProduto] = "nomeProduto"
+        [promocao]="promocao"
+        [idProduto]="idProduto"
+        [dataValidade]="dataValidade"
+        [precoProduto]="precoProduto"
+        ></app-card-produto>
+    </div>
 
-    <div class="card-body">
-
-        <h5 class="card-title">{{nomeProduto | uppercase}}</h5>
-
-        <!-- Versão de diretiva antes do Angular17
-
-        <span *ngIf="promocao; else elseBlock" class="badge text-bg-success">Promoção</span>
-            <ng-template #elseBlock>
-                <span class="badge text-bg-primary">Aproveite</span>
-            </ng-template>
-
-        -->
-
-        @if(promocao)
-        {
-        <span class="badge text-bg-success">Promoção</span>
-        }
-        @else
-        {
-        <span class="badge text-bg-primary">Aproveite</span>
-        }
-
-        <p class="card-text">
-            Identificação: {{idProduto | number: '2.0-0'}}
-            <br>
-            Validação: {{dataValidade | date: 'shortDate'}}
-        </p>
-
-        <a href="#" class="btn btn-success float-end">{{precoProduto | currency:'BRL'}}</a>
-
+    <div class="col">
+        <app-card-produto 
+        foto = "img/coliseu-roma.png"
+        nomeProduto = "Viagem a Roma"
+        [promocao]="false"
+        [idProduto]="15"
+        dataValidade="2025-12-31"
+        [precoProduto]="1200.0"
+        ></app-card-produto>
     </div>
 
 </div>
